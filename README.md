@@ -1,2 +1,2 @@
 # Mio componente
- [Ruota](https://www.w3schools.com/code/tryit.asp?filename=GPQD8OHBXUEK)
+ [Sega circolare](https://www.w3schools.com/code/tryit.asp?filename=GPQD8OHBXUEK)
