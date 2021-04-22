@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void sega_dati(double *r, double *h, double *l){
+void sega_dati(double r, double h, double l){
       
       cout<<"inserisci il raggio che desideri \n";
       cin>>r;  
@@ -14,7 +14,7 @@ void sega_dati(double *r, double *h, double *l){
       cin>>l;    
 }
 
-void sega_check(double *r, double *h, double *l){
+void sega_check(double r, double h, double l){
    
       if(r<0 || h<0 || l<0){
             cout<<"i dati inseriti non hanno senso, devono essere maggiori di 0 \n";
@@ -34,7 +34,7 @@ void sega_check(double *r, double *h, double *l){
       }
 }
 
-void sega_mod(double *r, double *h, double *l){
+void sega_mod(double r, double h, double l){
         int a,b;
         a=0;
         do{
@@ -60,14 +60,14 @@ void sega_mod(double *r, double *h, double *l){
             } 
             else if(b==4)
                   a=1;
-        }while(a=0);
+        }while(a==0);
 }
 
-void sega_init(double *r, double *h, double *l){
+void sega_init(double r, double h, double l){
       sega_dati(r,h,l);
       sega_check(r,h,l);
 }
-void sega_set(double *r, double *h, double *l){
+void sega_set(double r, double h, double l){
       sega_mod(r,h,l);
       sega_check(r,h,l);
 }
@@ -86,12 +86,9 @@ main(){
 
 sega_circolare* arc=new sega_circolare;
 
-
-double *a=2;
-double *b=5;
-double *c=7;
-sega_check(*a,*b,*c);
-sega_mod(*a,*b,*c);
+sega_dati(arc->raggio,arc->altezza,arc->lunghezza);
+sega_check(arc->raggio,arc->altezza,arc->lunghezza);
+sega_mod(arc->raggio,arc->altezza,arc->lunghezza);
 
  cout<<"\n";  
    return 0;
