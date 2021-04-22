@@ -4,43 +4,75 @@ using namespace std;
 
 void sega_dati(double *r, double *h, double *l){
       
-      cout<<"inserisci il raggio che desideri ";
+      cout<<"inserisci il raggio che desideri \n";
       cin>>r;  
 
-      cout<<"inserisci l'altezza che desideri ";
+      cout<<"inserisci l'altezza che desideri \n";
       cin>>h;
 
-      cout<<"inserisci la lunghezza che desideri ";
+      cout<<"inserisci la lunghezza che desideri \n";
       cin>>l;    
 }
 
 void sega_check(double *r, double *h, double *l){
    
       if(r<0 || h<0 || l<0){
-            cout<<"i dati inseriti non hanno senso, devono essere maggiori di 0";
-            sega_mod(r,h,l);
+            cout<<"i dati inseriti non hanno senso, devono essere maggiori di 0 \n";
+            sega_dati(r,h,l);
       }
       else if((2*r)>h || (2*r)>l){
-            cout<<"base e altezza del supporto dovrebbero essere maggiori al doppio del raggio della ruota";
-            sega_mod(r,h,l);
+            cout<<"base e altezza del supporto dovrebbero essere maggiori al doppio del raggio della ruota \n";
+            sega_dati(r,h,l);
       }
       else if(h>l){
-            cout<<"se l'altezza è maggiore della lunghezza il pezzo è poco stabile";
-            sega_mod(r,h,l);
+            cout<<"se l'altezza è maggiore della lunghezza il pezzo è poco stabile \n";
+            sega_dati(r,h,l);
+      }
+      else if(r>100 || h>200 || l>400){
+            cout<<"raggio altezza e lunghezza non devono essere troppo grandi (100,200,400) \n";
+            sega_dati(r,h,l);
       }
 }
 
 void sega_mod(double *r, double *h, double *l){
-//riacquisire i dati sbagliati
-  cout<<"inserisci un raggio adeguato ";
-      cin>>r;  
-
-      cout<<"inserisci un altezza ";
-      cin>>h;
-
-      cout<<"inserisci una lunchezza ";
-      cin>>l;  
+        int a,b;
+        a=0;
+        do{
+            cout<<"per modificare il raggio premi 1, per modificare l'altezza premere 2, per modificare la lunchezza premere 3. se non vuoi modificare nulla premere 4 \n ";
+            cin>>b;  
+            if(b==1){
+                  cout<<"inserisci un nuovo raggio";
+                  cin>>r;
+                  cout<<"se vuoi modificare un altro parametro premere 0, altrimenti premere un altro numero \n";
+                  cin>>a;
+            }
+            else if(b==2){
+                  cout<<"inserisci una nuova altezza";
+                  cin>>h;
+                  cout<<"se vuoi modificare un altro parametro premere 0, altrimenti premere un altro numero \n";
+                  cin>>a;
+            }
+            else if(b==3){
+                  cout<<"inserisci una nuova lunghezza";
+                  cin>>l;
+                  cout<<"se vuoi modificare un altro parametro premere 0, altrimenti premere un altro numero \n";
+                  cin>>a;
+            } 
+            else if(b==4)
+                  a=1;
+        }while(a=0);
 }
+
+void sega_init(double *r, double *h, double *l){
+      sega_dati(r,h,l);
+      sega_check(r,h,l);
+}
+void sega_set(double *r, double *h, double *l){
+      sega_mod(r,h,l);
+      sega_check(r,h,l);
+}
+
+
 
 struct sega_circolare{
   double raggio;
@@ -52,15 +84,14 @@ struct sega_circolare{
 
 main(){
 
-ruota* arc=new ruota;
+sega_circolare* arc=new sega_circolare;
 
 
-double a=2;
-double b=5;
-get_posizione(b,a,arc->pos);
-cout<<"vettore di 1 "<<arc->pos[1]<<" vettore di 2 "<<arc->pos[2];
-
-
+double *a=2;
+double *b=5;
+double *c=7;
+sega_check(*a,*b,*c);
+sega_mod(*a,*b,*c);
 
  cout<<"\n";  
    return 0;
