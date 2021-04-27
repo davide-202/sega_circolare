@@ -107,14 +107,7 @@ string sega_load(string filename){
     }
 
     else
-    cout<<"il file non esiste\n";  
-/*
-    ifstream t(filename);
-    stringstream buffer;
-
-    buffer << t.rdbuf();
-    string s = buffer.str();
-*/   
+    cout<<"il file non esiste\n";   
 }
 
 sega_circolare* sega_parse(string svg){
