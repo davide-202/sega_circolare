@@ -1,26 +1,32 @@
 #ifndef SVG_H
 #define SVG_H
 
-
 #include <iostream>
 #include <fstream>
 #include <string>
+
 using namespace std;
 
-int main () {
-  string line;
-  ifstream myfile ("example.txt");
-  if (myfile.is_open())
-  {
-    while ( getline (myfile,line) )
-    {
-      cout << line << '\n';
-    }
-    myfile.close();
-  }
+string sega_to_svg(sega_circolare* sega);
+/*
+* questa funzione prende i dati del componente e ne crea
+* una stringa che può essere visualizzata come svg
+*/
 
-  else cout << "Unable to open file"; 
+void sega_save(string filename, string s);
+/*
+* questa funzione serve per salvare la stringa in un file
+*/
 
-  cout<<"\n"; 
-  return 0;
-}
+string sega_load(string filename);
+/*
+* questa funzione legge la stringa da un file
+*/
+
+sega_circolare* sega_parse(string svg);
+/*
+* questa funzione deve leggere una stringa e costruire
+* la struct originale
+*/
+
+#endif
